@@ -1,0 +1,14 @@
+<div class="dashboard d-flex bg-light" style="height: 100vh;">
+    <div class="sidebar bg-white m-3 rounded" [ngClass]="{'collapsed': isSidebarCollapsed}">
+        <app-sidebar (variableSelected)="onVariableSelected($event)"></app-sidebar>
+    </div>
+
+    <div class="dashboard__content flex-grow-1" [ngClass]="{'expanded': isSidebarCollapsed}">
+        <div class="topbar d-flex justify-content-between align-items-center bg-white p-3 rounded m-3" style=" height: 10%;">
+            <app-topbar (toggleSidebar)="toggleSidebar()" (toggleUserSidebar)="toggleUserSidebar()"></app-topbar>
+        </div>
+        <div class="main-content p-3 overflow-auto">
+            <app-content [selectedVariable]="selectedVariable"></app-content>
+        </div>
+    </div>
+</div>

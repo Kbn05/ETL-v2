@@ -1,0 +1,27 @@
+<div class="container-fluid vh-100 d-flex align-items-center justify-content-center" style="background-image: url('/backgroundLogin.jpg'); background-size: cover;">
+    <div class="card shadow-lg col-sm-6 col-md-4" style="opacity: 0.9;">
+        <div class="card-body text-center">
+            <img src="/logo2.png" alt="logo" class="logo mb-3">
+            <h1 class="h4 mb-4" style="color: #4C489D;">Bienvenido</h1>
+            <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Usuario</label>
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Ingrese su nombre de usuario" [(ngModel)]="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Ingrese su contraseña" [(ngModel)]="password" required>
+                </div>
+                <div class="d-flex flex-column align-items-center">
+                    <button type="submit" class="btn btn-primary mb-2" [disabled]="!loginForm.form.valid">
+                        Ingresar
+                    </button>
+                    <button type="button" class="btn btn-secondary mb-2">
+                        Registro
+                    </button>
+                    <a href="/forgot-password" class="text-muted">Olvidó contraseña?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

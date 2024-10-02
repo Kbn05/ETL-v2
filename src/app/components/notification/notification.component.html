@@ -1,0 +1,7 @@
+<div class="notification" *ngIf="messageNotification.message">
+    <div class="d-flex align-items-center">
+      <img [src]="messageNotification.img" alt="Notification image" *ngIf="messageNotification.img" class="me-2" />
+      <span>{{ messageNotification.message }}</span>
+    </div>
+  </div>
+  

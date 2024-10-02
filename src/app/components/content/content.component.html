@@ -1,0 +1,38 @@
+<div *ngIf="!selectedVariable" class="welcome-container text-center mt-5">
+    <h2 class="welcome-title">Bienvenido al Dashboard</h2>
+    <p class="welcome-text">Selecciona una variable para continuar.</p>
+</div>
+
+<div *ngIf="selectedVariable" class="action-container bg-white rounded shadow mt-3">
+    <div class="content-container p-4">
+        <h3 class="variable-title">{{ currentVariableConfig.name }}</h3>
+        <h4 class="variable-description">{{ currentVariableConfig.description }}</h4>
+        
+        <div class="button-group d-flex justify-content-center gap-3 mt-2 flex-wrap">
+            <button class="action-button btn btn-warning" (click)="performAction('query')">Consultar</button>
+            <button class="action-button btn btn-primary" (click)="performAction('update')">Actualizar</button>
+        </div>
+        
+        <div *ngFor="let query of queryResults" class="query-result mt-3">
+            <div class="query-item d-grid grid-template-columns-1fr-1fr-1fr align-items-center justify-items-center  mx-auto">
+                <span>{{ query.name }}</span>
+                <button class="action-button btn btn-success" (click)="performAction('get')">Descargar</button>
+                <button class="action-button btn btn-info" (click)="performAction('link')">Link</button>
+            </div>
+        </div>
+
+        <div *ngIf="isQueryFormVisible" class="query-form-container">
+            <form (ngSubmit)="submitForm()" class="query-form">
+                <div *ngFor="let field of currentVariableConfig.inputFields" class="form-field mb-3">
+                    <label [attr.for]="field.name" class="form-label">{{ field.name | titlecase }}:</label>
+                    <input [attr.type]="field.type" [(ngModel)]="formData[field.name]" [ngModelOptions]="{standalone: true}" [attr.id]="field.name" class="form-input form-control"/>
+                </div>
+                <button type="submit" class="submit-button btn btn-primary">Submit</button>
+            </form>
+        </div>
+        
+        <div class="notification-container">
+            <app-notification *ngFor="let message of messages" [message]="message"></app-notification>
+        </div>
+    </div>
+</div>

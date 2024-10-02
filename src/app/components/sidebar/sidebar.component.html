@@ -1,0 +1,16 @@
+<!-- <div class="sidebar d-flex flex-column bg-light rounded" style="width: 220px; height: 96vh;"> -->
+<div class="sidebar d-flex flex-column rounded collapsible" style="width: 220px;">
+    <div class="sidebar__logo text-center mb-3">
+        <img src="/logo2.png" alt="Logo" class="img-fluid" style="max-height: 80px;">
+    </div>
+    <div class="sidebar__user text-center py-2">
+        <p class="sidebar__user-name fw-bold mb-0">Bienvenido, {{ username }}</p>
+    </div>
+    <div class="sidebar__menu flex-grow-1 overflow-auto">
+        <ul class="list-unstyled p-0 m-0">
+            <li *ngFor="let variable of visibleVariables" (click)="selectVariable(variable)">
+                <button class="var-button btn w-100 text-start">{{ variable.name }}</button>
+            </li>
+        </ul>
+    </div>
+</div>
